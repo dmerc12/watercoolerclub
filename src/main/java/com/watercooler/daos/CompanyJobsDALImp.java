@@ -90,7 +90,8 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                         rs.getString("applicant_email"),
                         rs.getString("applicant_work_history"),
                         rs.getString("applicant_references"),
-                        rs.getString("applicant_education")
+                        rs.getString("applicant_education"),
+                        rs.getString("desired_job")
                 );
                 applicants.add(applicant);
             }
