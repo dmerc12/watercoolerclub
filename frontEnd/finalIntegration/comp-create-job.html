@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job Post</title>
+</head>
+<body>
+    <h1>Create Your Job Post Below!</h1><br>
+    <h3>Enter the job ID:</h3>
+    <input id="jobIdInput" type="number"><br>
+    <h3>Enter the job title:</h3>
+    <input id="jobTitleInput" type="text"><br>
+    <h3>Pick the job type: </h3>
+    <select id="jobTypeSelect" name="jobTypeSelect">
+        <option value="--Please choose one--">--Please choose one from below--</option>
+        <option value="Trades">Trades</option>
+        <option value="Management">Management</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Technology">Technology</option>
+        <option value="Human Resources">Human Resources</option>
+    </select>
+    <h3>Enter the job description:</h3>
+    <input id="jobDescriptionInput" type="text"><br>
+    <h3>Enter the company ID:</h3>
+    <input id="companyIdInput" type="number">
+    <h3>Pick the job location:</h3>
+    <select name="jobLocationSelect" id="jobLocationSelect">
+        <option value="--Please choose one--">--Please choose one from below--</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Texas">Texas</option>
+        <option value="Kansas">Kansas</option>
+    </select>
+    <h3>Enter the Company name:</h3>
+    <input id="companyNameInput" type="text"><br>
+    <button id="postJobButton" onclick="createJobPost()">Post</button>
+    <button id="buttonToReturnToHomeFromCreateJobPost" onclick="returnHome()">Go back</button>
+
+</body>
+<script>
+    
+    function resetInputs(){
+        document.getElementById("jobIdInput").value="";
+        document.getElementById("jobTitleInput").value="";
+        document.getElementById("jobTypeSelect").value="";
+        document.getElementById("jobDescriptionInput").value="";
+        document.getElementById("companyIdInput").value="";
+        document.getElementById("jobLocationSelect").value="";
+        document.getElementById("companyNameInput").value="";
+    }
+
+    async function createJobPost(){
+        const jobId = document.getElementById("jobIdInput").value;
+        const title = document.getElementById("jobTitleInput").value;
+        const type = document.getElementById("jobTypeSelect").value;
+        const description = document.getElementById("jobDescriptionInput").value;
+        const companyId = document.getElementById("companyIdInput").value;
+        const location = document.getElementById("jobLocationSelect").value;
+        const companyName = document.getElementById("companyNameInput").value;
+        createJobPostJSON  = {
+            'jobId': jobId,
+            'title': title,
+            'type': type,
+            'description': description,
+            'companyId': companyId,
+            'location': location,
+            'companyName': companyName
+        }
+        let sendJobPost = {
+            method: "POST",
+            headers: {'Content-Type': "application/json"},
+            body: JSON.stringify(createJobPostJSON)
+        }
+        apiURL = "http://localhost:8080/createJobPost"
+        const response = await fetch(apiURL, sendJobPost);
+        if (response.status === 201) {
+            const apiResponse = await response.json();
+            alert(`Job post successfully generated with the job ID number of ${apiResponse.jobId}`);
+            resetInputs();
+        } else if (response.status === 400) {
+            const apiResponse = await response.json();
+            alert(`Could not create job post. ${apiResponse.message}`);
+            resetInputs();
+        } else {
+            alert("Something went wrong. Please contact administration.");
+        }
+    }
+
+    function returnHome(){
+        window.location.href = "comp-home.html";
+    }
+</script>
+</html>

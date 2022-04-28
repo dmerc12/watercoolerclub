@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Skill Test</title>
+</head>
+<body>
+    <input id="question-one" type="text" placeholder="Question One">
+    <input id="answer-one" type="text" placeholder="Answer One">
+    <input id="question-two" type="text" placeholder="Question Two">
+    <input id="answer-two" type="text" placeholder="Answer Two">
+    <input id="question-three" type="text" placeholder="Question Three">
+    <input id="answer-three" type="text" placeholder="Answer Three">
+    <button id="submit-test-button" onclick="submitSkillTest()">Submit</button>
+    <button id="cancel-button" onclick="toCompanyLandingPage()">Cancel</button>
+    
+    <script>
+        const questionOneInput = document.getElementById("question-one");
+const answerOneInput = document.getElementById("answer-one");
+const questionTwoInput = document.getElementById("question-two");
+const answerTwoInput = document.getElementById("answer-two");
+const questionThreeInput = document.getElementById("question-three");
+const answerThreeInput = document.getElementById("answer-three");
+
+async function submitSkillTest() { 
+    let skillTest = {
+        "skillTestId": -1,
+        "questionOne": questionOneInput.value,
+        "answerOne": answerOneInput.value,
+        "questionTwo": questionTwoInput.value,
+        "answerTwo": answerTwoInput.value,
+        "questionThree": questionThreeInput.value,
+        "answerThree": answerThreeInput.value,
+        "companyId": window.sessionStorage.getItem("company-id")
+    };
+
+    let config = {
+        method: "POST",
+        headers: {'Content-Type': "application/json"},
+        body: JSON.stringify(skillTest)
+    };
+
+    const submit = await fetch("http://localhost:8080/skilltest/new", config);
+    if (submit.status == 201) {
+        alert("Test created successfully!");
+        toLandingPage();
+    } else {
+        let errorMessage = await submit.json();;
+        alert(errorMessage["errorMessage"]);
+    }
+}
+
+function toCompanyLandingPage() {
+    window.location.href = "comp-home.html";
+}
+    </script>
+</body>
+</html>

@@ -16,8 +16,8 @@ Feature: As a company, I want to create a job post so that people may apply to m
     Then  I am on the landing page
 
     Examples:
-    |jobId | title | description | companyId | companyName
-    | 1 | title | description | -1 | companyName |
+    |jobId | title | description | companyId | companyName |
+    | 1    | title | description | -1        | companyName |
 
   Scenario Outline: As a company, I should not be able to post jobs with input too long.
     Given I am on the landing page
@@ -36,8 +36,8 @@ Feature: As a company, I want to create a job post so that people may apply to m
     Then  I am on the landing page
 
     Examples:
-      |jobId | title | description | companyId | companyName
-      | 1 | thisiswaytoolongtopassthroughtheteststhatIneedTtoperform | description | -1 | companyName |
+      |jobId | title | description | companyId | companyName |
+      | 1    | thisiswaytoolongtopassthroughtheteststhatIneedTtoperform | description | -1 | companyName |
 
   Scenario Outline: As a company, I should not be able to post jobs with input too long.
     Given I am on the landing page
@@ -56,7 +56,7 @@ Feature: As a company, I want to create a job post so that people may apply to m
     Then  I am on the landing page
 
     Examples:
-      |jobId | title | description | companyId | companyName
+      |jobId | title | description | companyId | companyName |
       | 1 | title | thisiswaytoolongtopassthroughtheteststhatIneedTtoperformthisiswaytoolongtopassthroughtheteststhatIneedTtoperformthisiswaytoolongtopassthroughtheteststhatIneedTtoperformthisiswaytoolongtopassthroughtheteststhatIneedTtoperformthisiswaytoolongtopassthroughtheteststhatIneedTtoperformthisiswaytoolongtopassthroughtheteststhatIneedTtoperform | -1 | companyName |
 
   Scenario Outline: As a company, I should not be able to post jobs with input too long.
@@ -76,5 +76,5 @@ Feature: As a company, I want to create a job post so that people may apply to m
     Then  I am on the landing page
 
     Examples:
-      |jobId | title | description | companyId | companyName
+      |jobId | title | description | companyId | companyName |
       | 1 | title | description | -1 | thisiswaytoolongtopassthroughtheteststhatIneedTtoperform |

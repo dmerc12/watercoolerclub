@@ -1,0 +1,35 @@
+Stand Up Friday April 22
+
+Scrum Leader:   Zachary Wilmer
+Scrumlings:     Grace George
+                Dylan Mercer
+                Leslie Rich
+                Jeryl Skinner
+
+
+Discussion and Work:
+
+1) As a group, we are mostly working on or finishing up the back-end, at various stages; Zach is on the front-end
+
+2) Status:
+    - Zach is working on the end-to-end testing today, setting up test pages
+    - Leslie finished up the API and is working on the html landing pages; helped Grace with changing the phone number
+        from a long data type to a string
+    - Dylan finished the API, and is working on the html pages also, (see discussion below on dynamically changing
+        elements on the webpages with Zach's template
+    - Grace is finishing up the Service Layer
+    - Jeryl is finishing up the Service Layer
+
+3) Discussion on logging and dynamically changing webpages:
+    A) Logging:
+        All agreed to follow Zach's logging convention at the beginning/end of every method, and at an error message:
+            "BEGIN/FINISH [layer] function [function name] with data:\n" + (incoming paramaters)
+            "ERROR with [layer] function [function name] with error: " + error message as string
+    B) Dynamically changing webpages:
+        Zach explained to us how he uses his template to dynamically change the elements in a webpage--Dylan and I
+        will both need to use this for our "View Jobs", "View Applied Jobs", and "Delete Jobs" webpages.
+
+
+
+
+

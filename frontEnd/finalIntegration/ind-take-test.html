@@ -11,6 +11,7 @@
     <p id="question-three"></p>
     <input id="answer-three" type="text">
     <button id="submit-button" onclick="submitTest()">Submit Test</button>
+    <button id="backButton" onclick="toCompanyHomePage()">Return</button>
 </body>
 <script>
     const questionOne = document.getElementById("question-one");
@@ -63,8 +64,12 @@
             }
         } else {
             alert("You did not pass the test.");
-            window.location.href = "view-skill-tests.html";
+            window.location.href = "ind-take-test.html";
         }
+    }
+
+    function toCompanyHomePage(){
+        window.location.href = "ind-home.html"
     }
 </script>
 </html>

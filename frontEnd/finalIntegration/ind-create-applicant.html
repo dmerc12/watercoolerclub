@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Create</title>
+</head>
+<body>
+
+    <input type="text" id="username" placeholder="Type your username here">
+    <br>
+    <input type="text" id="password" placeholder="Type your password here">
+    <br>
+    <button id="login" onclick="sendMessage()">Create User Account</button>
+
+
+</body>
+<script>
+
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    let credentialsUnPw = {"applicantUsername": "username", "applicantPassword": "password"}
+
+
+    async function sendMessage(){
+
+        credentialsUnPw["applicantUsername"] = usernameInput.value;
+        console.log(usernameInput.value)
+        usernameInput.value = "";
+        credentialsUnPw["applicantPassword"] = passwordInput.value;
+        console.log(passwordInput.value)
+        passwordInput.value = "";
+
+        let config = {
+            method:"POST",
+            headers:{'Content-Type':"application/json"},
+            body: JSON.stringify(credentialsUnPw)
+        };
+
+        const response = await fetch("http://localhost:8080/create/applicant", config);
+        if(response.status === 201){
+            // const id = await response.json();
+            // window.localStorage.setItem("companyId", id.companyId);
+            alert("You've successfully created a user account")
+            window.location.href = "landing-page.html";
+        } else {
+            alert("Incorrect Username or Password");
+        }
+    }
+
+
+
+
+</script>
+</html>

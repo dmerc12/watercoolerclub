@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Managing Posted Jobs</title>
+</head>
+<body onload="viewJobPosts()">
+    <h1>View Posted Jobs Below!</h1><br>
+    <button id="backButton" onclick="toLandingPage()">Return to Landing</button>
+    <table>
+        <thead>
+        </thead>
+        <tbody id="jobsTable">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    async function viewJobPosts(){
+        let requestURL = `http://localhost:8080/viewPostedJobs/${window.sessionStorage.getItem("currentJobId")}`
+        let response = await fetch(requestURL, {method: "PATCH"});
+        if (response.status == 201) {
+            const data = await response.json();
+            populateJobsPage(data);
+        }
+    }
+
+    function populateJobsPage(data){
+        jobsTable.innerHTML = ""
+        for(let job in data) {
+            const row = document.createElement("tr");
+            jobsTable.appendChild(row);
+
+            const square1 = document.createElement("td");
+            square1.textContent = data["jobId"];
+            row.appendChild(square1);
+
+            const square2 = document.createElement("td");
+            square2.innerHTML = `<button id="viewApplicants${key}" onclick="viewApplicants(${key})">View Applicants</button>`
+            row.appendChild(square2);
+
+            const square3 = document.createElement("td");
+            square3.innerHTML = `<button id="deleteJobPost${key}" onclick="deletejobPost(${key})">Delete Job Post</button>`
+            row.appendChild(square3);
+
+        }
+    }
+
+    async function viewApplicants(){
+        let requestURL = `http://localhost:8080/viewJobApplicants/${window.sessionStorage.getItem("currentJobId")}`
+        let response = await fetch(requestURL, {method: "PATCH"});
+        if (response.status == 201){
+            const data = await response.json();
+            populateApplicantsPage(data);
+        }
+    }
+
+    function populateApplicantsPage(){
+        for (applicant in returningApplicants){
+            applicant.innerHTML = data["applicant"];
+            window.sessionStorage.setItem("id", data["id"]);
+            window.sessionStorage.setItem("firstName", data["firstName"]);
+            window.sessionStorage.setItem("lastName", data["lastName"]);
+            window.sessionStorage.setItem("phoneNumber", data["phoneNumber"]);
+            window.sessionStorage.setItem("email", data["email"]);
+            window.sessionStorage.setItem("references", data["references"]);
+            window.sessionStorage.setItem("education", data["education"]);
+        }
+    }
+
+    async function deleteJobPost(){
+        let requestURL = `http://localhost:8080/deleteJobPost/${window.sessionStorage.getItem("currentJobId")}`
+        let response = await fetch(requestURL, {method: "DELETE"});
+        if (response.status == 201){
+            const data = await response.json();
+        }
+    }
+
+    function toLandingPage(){
+        window.location.href = "comp-home.html";
+    }
+</script>
+</html>

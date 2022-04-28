@@ -21,7 +21,7 @@ public class CompanyJobsSALTests {
     public static List<Job> mockJobs = new ArrayList<Job>();
     public static Job mockJob = new Job(1,"title", "type", "description", 1, "location", "company name");
     public static List<Applicant> mockApplicants = new ArrayList<Applicant>();
-    public static Applicant mockApplicant = new Applicant(1, "first", "last", 405647937, "email@mock.com", "mock history", "mock references", "mock education");
+    public static Applicant mockApplicant = new Applicant(1, "first", "last", "405647937", "email@mock.com", "mock history", "mock references", "mock education", "mock desires");
 
     @BeforeClass
     public void setup(){

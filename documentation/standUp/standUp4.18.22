@@ -1,0 +1,21 @@
+Stand Up Monday April 18
+
+Scrum Leader:   Zachary Wilmer
+Scrumlings:     Grace George
+                Dylan Mercer
+                Leslie Rich
+                Jeryl Skinner
+
+
+Discussion and Work:
+
+1) As a group, we are mostly finishing up the DAO, and beginning the Service Layer
+2) Blockers:
+    - Zach assisted Dylan with his blocker; he is having an issue throwing an error for an empty list; still unresolved
+    - Zach assisted Jeryl with re-downloading Java/JDK as the test files were not be read in Java by IntelliJ; we also
+        reviewed the tests in DAO
+    - Zach assisted Grace with the coding and syntax in her portion on the DAO
+
+
+
+

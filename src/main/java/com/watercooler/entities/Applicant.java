@@ -6,18 +6,16 @@ public class Applicant {
     private int id;
     private String firstName;
     private String lastName;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private String workHistory;
     private String references;
     private String education;
     private String desiredJob;
 
-    public Applicant() {
+    public Applicant() { }
 
-    }
-
-    public Applicant(int id, String firstName, String lastName, long phoneNumber, String email, String workHistory, String references, String education, String desiredJob) {
+    public Applicant(int id, String firstName, String lastName, String phoneNumber, String email, String workHistory, String references, String education, String desiredJob) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,11 +51,11 @@ public class Applicant {
         this.lastName = lastName;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -89,13 +87,13 @@ public class Applicant {
 
     public String getDesiredJob() { return desiredJob; }
 
-    public void setDesiredJob(String desiredJob) { this.desiredJob = desiredJob; }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Applicant applicant = (Applicant) o;
+
         return id == applicant.id && phoneNumber == applicant.phoneNumber && Objects.equals(firstName, applicant.firstName) && Objects.equals(lastName, applicant.lastName) && Objects.equals(email, applicant.email) && Objects.equals(workHistory, applicant.workHistory) && Objects.equals(references, applicant.references) && Objects.equals(education, applicant.education) && Objects.equals(desiredJob, applicant.desiredJob);
     }
 
@@ -110,7 +108,7 @@ public class Applicant {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", workHistory='" + workHistory + '\'' +
                 ", references='" + references + '\'' +

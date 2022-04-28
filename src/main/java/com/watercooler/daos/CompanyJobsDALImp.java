@@ -86,12 +86,12 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                         rs.getInt("applicant_id"),
                         rs.getString("applicant_first_name"),
                         rs.getString("applicant_last_name"),
-                        rs.getLong("applicant_phone_number"),
+                        rs.getString("applicant_phone_number"),
                         rs.getString("applicant_email"),
                         rs.getString("applicant_work_history"),
                         rs.getString("applicant_references"),
                         rs.getString("applicant_education"),
-                        rs.getString("desired_job")
+                        rs.getString("applicant_desired_job")
                 );
                 applicants.add(applicant);
             }

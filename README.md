@@ -43,7 +43,9 @@
 
 
 # To Do
-
+- Finish development of remaining features.
+- Finish integration.
+- Update bug tracker for bugs from branch integration and fix bugs. 
 
 # Getting Started
 - To clone: 

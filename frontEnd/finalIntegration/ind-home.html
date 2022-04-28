@@ -14,13 +14,32 @@
     <title>WCC Job Board - Individual Home</title>
 </head>
 <body>
-    <button id="ind-edit-profile-button" onclick="toEditProfile()">Edit Profile</button>
-    <button id="view-applied-jobs-button" onclick="toViewAppliedJobs()">View Applications</button>
-    <button id="take-skill-tests-button" onclick="">Take Skill Tests</button>
-    <button id="logout-button" onclick="">Logout</button>
+    <button id="ind-edit-profile-button" onclick="toEditProfile()">Edit Profile</button><br>
+    <button id="search-for-jobs-button" onclick="searchForJobs()">Search for jobs</button><br>
+    <button id="view-applied-jobs-button" onclick="toViewAppliedJobs()">View Applications</button><br>
+    <button id="view-skill-tests-button" onclick="toViewAllTestsPage()">View and Take Skill Tests</button><br>
+    <button id="logout-button" onclick="logout()">Logout</button>
     
 </body>
 <script>
+    function toEditProfile(){
+        window.location.href = "ind-profile.html";
+    }
 
+    function searchForJobs(){
+        window.location.href = "ind-search-jobs.html";
+    }
+
+    function toViewAppliedJobs(){
+        window.location.href = "ind-view-applied-jobs.html";
+    }
+
+    function toViewAllTestsPage(){
+        window.location.href = "ind-view-tests.html";
+    }
+
+    function logout(){
+        window.location.href = "landing-page.html";
+    }
 </script>
 </html>

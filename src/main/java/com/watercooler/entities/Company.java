@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Company {
     private int id;
     private String name;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private String aboutUs;
     private String relatedJobs;
@@ -15,7 +15,7 @@ public class Company {
 
     }
 
-    public Company(int id, String name, long phoneNumber, String email, String aboutUs, String relatedJobs, String location) {
+    public Company(int id, String name, String phoneNumber, String email, String aboutUs, String relatedJobs, String location) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -41,11 +41,11 @@ public class Company {
         this.name = name;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Open Jobs</title>
+</head>
+
+<body">
+
+    <input type="number" id="applicant-id-input" placeholder="Enter applicant ID here.">
+
+    <label for="job-type-select">Choose a Job Type:</label>
+
+    <select name="JobType" id="job-type-select">
+        <option value="">--Please choose an option--</option>
+        <option value="Technology">Technology</option>
+        <option value="Management">Management</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Trades">Trades</option>
+        <option value="HR">Human Resources</option></select>
+
+
+    <label for="job-location-select">Choose a Job Location:</label>
+
+    <select name="JobLocation" id="job-location-select">
+        <option value="">--Please choose an option--</option>
+        <option value="district-of-columbia">District of Columbia</option>
+        <option value="virginia">Virginia</option>
+        <option value="maryland">Maryland</option>
+        <option value="testLocation4">TestLocation4</option>
+    </select>
+
+    <button id="select-button" onclick="jobSearch()">Search</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Job Type</th>
+                <th>Job Location</th>
+                <th>Job Title</th>
+                <th>Job Description</th>
+                <th>Company Name</th>
+                <th>Apply</th>
+
+            </tr>
+            </thead>
+        <tbody id="view-jobs-table">
+        </tbody>
+    </table>
+
+    <script src="view-jobs-table-js.js"></script>
+</body>
+</html>
+

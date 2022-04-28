@@ -9,8 +9,10 @@
     <br>
     <input type="text" id="password" placeholder="Type your password here">
     <br>
-    <button id="ind-login" onclick="indLogin()">Login as an Individual</button>
-    <button id="comp-login" onclick="compLogin()">Login as a Company</button>
+    <button id="ind-login" onclick="indLogin()">Login as an Individual</button><br>
+    <button id="comp-login" onclick="compLogin()">Login as a Company</button><br>
+    <button id="user" onclick="rerouteCreateApp()">Create an account for users</button><br>
+    <button id="company" onclick="rerouteCreateComp()">Create an account for companies</button><br>
 
 </body>
 <script>
@@ -61,6 +63,14 @@
             alert("Incorrect Username or Password");
         }
     }
-    
+
+    function rerouteCreateComp(){
+        window.location.href = "comp-create-company.html"
+    };
+
+    function rerouteCreateApp(){
+        window.location.href = "ind-create-applicant.html"
+    };
+
 </script>
 </html>

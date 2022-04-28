@@ -1,0 +1,24 @@
+Stand Up Wednesday April 20
+
+Scrum Leader:   Zachary Wilmer
+Scrumlings:     Grace George
+                Dylan Mercer
+                Leslie Rich
+                Jeryl Skinner
+
+
+Discussion and Work:
+
+1) As a group, we are mostly working on or finishing up the back-end, at various stages; Zach is starting the front end
+2) Status:
+    - Zach is starting up the front-end--is finished with the DAO, Service Layer, API--creating, viewing Skills Tests
+    - Lelie is finishing up the back end, is working on the API, and then will start the front end
+    - Dylan is testing in the API, and then will move on to the front end
+    - Grace is working on the Service Layer
+    - Jeryl is still finishing up the DAO with the View test for the Applied Jobs feature
+3) Main blocker that is still outstanding is Dylan's negative test for the View feature on the company side,
+    with the empty list returning null instead of the Exception--Eric will get back to him for the solution
+
+
+
+

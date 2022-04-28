@@ -5,3 +5,41 @@
 4. create skill tests
 5. logout
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Landing Page</title>
+</head>
+<body>
+    <button id="createJobPostFromHome" onclick="toCreateJobPost()">Create Job Post</button><br>
+    <button id="viewPostedJobsFromHome" onclick="toPostedJobs()">View Posted Jobs</button><br>
+    <button id="editCompanyProfileFromHome" onclick="toEditCompanyProfile()">Edit Company Profile</button><br>
+    <button id="manageCompanySkillTestsFromHome" onclick="toManageCompanySkillTests()">Manage Skill Tests</button><br>
+    <button id="logOutFromCompanyHome" onclick="logout()">Logout</button>
+</body>
+<script>
+
+    function toCreateJobPost(){
+        window.location.href = "comp-create-job.html"
+    }
+
+    function toPostedJobs(){
+        window.location.href = "comp-manage-jobs.html"
+    }
+
+    function toEditCompanyProfile(){
+        window.location.href = "comp-profile.html"
+    }
+
+    function toManageCompanySkillTests(){
+        window.location.href = "comp-create-test.html"
+    }
+
+    function logout(){
+        window.location.href = "landing-page.html"
+    }
+</script>
+</html>

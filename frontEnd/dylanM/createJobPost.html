@@ -40,23 +40,23 @@
 <script>
     
     function resetInputs(){
-        document.getElementById("jobId").value="";
-        document.getElementById("title").value="";
-        document.getElementById("type").value="";
-        document.getElementById("description").value="";
-        document.getElementById("companyId").value="";
-        document.getElementById("location").value="";
-        document.getElementById("companyName").value=""
+        document.getElementById("jobIdInput").value="";
+        document.getElementById("jobTitleInput").value="";
+        document.getElementById("jobTypeSelect").value="";
+        document.getElementById("jobDescriptionInput").value="";
+        document.getElementById("companyIdInput").value="";
+        document.getElementById("jobLocationSelect").value="";
+        document.getElementById("companyNameInput").value="";
     }
 
     async function createJobPost(){
-        const jobId = document.getElementById("jobId").value;
-        const title = document.getElementById("title").value;
-        const type = document.getElementById("type").value;
-        const description = document.getElementById("description").value;
-        const companyId = document.getElementById("companyId").value;
-        const location = document.getElementById("location").value;
-        const companyName = document.getElementById("companyName").value;
+        const jobId = document.getElementById("jobIdInput").value;
+        const title = document.getElementById("jobTitleInput").value;
+        const type = document.getElementById("jobTypeSelect").value;
+        const description = document.getElementById("jobDescriptionInput").value;
+        const companyId = document.getElementById("companyIdInput").value;
+        const location = document.getElementById("jobLocationSelect").value;
+        const companyName = document.getElementById("companyNameInput").value;
         createJobPostJSON  = {
             'jobId': jobId,
             'title': title,
@@ -71,31 +71,18 @@
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify(createJobPostJSON)
         }
+        apiURL = "http://localhost:8080/createJobPost"
         const response = await fetch(apiURL, sendJobPost);
-        if (response.status === 200) {
+        if (response.status === 201) {
             const apiResponse = await response.json();
-            swal.fire({
-                title: 'Job post successfully generated with the job ID number of ' + String(apiResponse.jobId),
-                confirmButtonText: 'Continue'
-            }).then(function(result) {
-                if (result.isConfirmed) {
-                    resetInputs();
-                }
-            });
+            alert(`Job post successfully generated with the job ID number of ${apiResponse.jobId}`);
+            resetInputs();
         } else if (response.status === 400) {
             const apiResponse = await response.json();
-            swal.fire(
-                "Could not create job post. . . ",
-                apiResponse.message,
-                "error"
-            );
+            alert(`Could not create job post. ${apiResponse.message}`);
             resetInputs();
         } else {
-            swal(
-                "Something really, really, really bad happened. . .",
-                "Please try again.",
-                "error"
-            );
+            alert("Something went wrong. Please contact administration.");
         }
     }
 </script>
