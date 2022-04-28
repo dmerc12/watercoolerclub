@@ -46,13 +46,13 @@ public class ManagingJobsController {
                 if (job.getCompanyId() == companyId.getCompanyId()) {
                     String jobJSON = gson.toJson(job);
                     ctx.result(jobJSON);
-                    ctx.status(201);
+                    ctx.status(200);
                     logger.info("Finished API handler view jobs with result: /n" + jobJSON + "/nStatus Code: " + 201);
                 }
             }
         } catch (NoJobFound exception){
             ctx.result("There are no posted jobs with the company ID provided!");
-            ctx.status(500);
+            ctx.status(400);
             logger.error("Error with API handler viewJobs with error: " + exception.getMessage());
         }
     };
@@ -67,7 +67,7 @@ public class ManagingJobsController {
             for (Applicant applicant : applicants) {
                 String applicantJSON = gson.toJson(applicant);
                 ctx.result(applicantJSON);
-                ctx.status(201);
+                ctx.status(200);
                 logger.info("Finished API handler viewApplicants with result: /n" + applicantJSON + "/nStatus Code: " + 201);
             }
         } catch (NoApplicants exception) {

@@ -1,18 +1,11 @@
 package com.watercooler.apis;
 
+import com.watercooler.daos.*;
+import com.watercooler.saos.*;
 import io.javalin.Javalin;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
-import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
-import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
-import com.watercooler.daos.UsernamePasswordCompanyDAOInterface;
-import com.watercooler.saos.UsernamePasswordApplicantSAOImp;
-import com.watercooler.saos.UsernamePasswordApplicantSAOInterface;
-import com.watercooler.saos.UsernamePasswordCompanySAOImp;
-import com.watercooler.saos.UsernamePasswordCompanySAOInterface;
 
 public class JobBoardMain {
 
@@ -36,6 +29,12 @@ public class JobBoardMain {
 
         SkillTestsController testsController = new SkillTestsController();
 
+        JobSearchController jobSearchController = new JobSearchController();
+
+        ApplicantDAOImp daoImp = new ApplicantDAOImp();
+        ApplicantSAOImp saoImp = new ApplicantSAOImp(daoImp);
+        UpdateApplicantController updateController = new UpdateApplicantController(saoImp);
+
         app.post("/login/applicant", sessionController.UnPwApplicantVerify);
         app.post("/login/company", sessionController.UnPwCompanyVerify);
         app.post("/create/applicant", sessionController.UnPwApplicantCreate);
@@ -50,6 +49,13 @@ public class JobBoardMain {
         app.get("/skilltest/{skillTestId}", testsController.getSingleSkillTest);
         app.post("/skilltest/{skillTestId}/result/{applicantId}", testsController.postTestResult);
         app.post("/skilltest/new", testsController.postNewSkillTest);
+
+        app.get("/jobSearch/{jobType}/{jobLocation}", jobSearchController.jobSearch);
+        app.post("/jobInsertJob/{jobId}/{applicantId}", jobSearchController.insertAppliedJobs);
+        app.get("/viewAppliedJobs/{applicantId}", jobSearchController.viewAppliedJobs);
+
+        app.post("/update/applicant", updateController.updateApplicant);
+        app.post("/update/Company", updateController.updateCompany);
 
         app.start();
         logger.info("Application started successfully.");

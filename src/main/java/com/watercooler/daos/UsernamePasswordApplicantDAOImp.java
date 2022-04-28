@@ -1,8 +1,8 @@
 package com.watercooler.daos;
 
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
-import com.watercooler.utilities.DatabaseConnection;
+
+import com.watercooler.entities.*;
+import com.watercooler.utilities.*;
 
 import java.sql.*;
 

@@ -1,12 +1,10 @@
-package com.watercooler.javalin;
+package com.watercooler.apis;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import com.watercooler.daos.ApplicantDAO;
 import com.watercooler.daos.CompanyDAO;
 import com.watercooler.daos.CompanyDAOImp;
 import com.watercooler.entities.Applicant;
 import com.watercooler.entities.Company;
-import com.watercooler.saos.ApplicantSAOImp;
 import com.watercooler.saos.ApplicantSAOSInterface;
 import com.watercooler.saos.CompanySAOImp;
 import com.watercooler.saos.CompanySAOSInterface;
