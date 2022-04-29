@@ -19,6 +19,7 @@ public class CreateSkillTestSteps {
 
     @When("I input the {string}")
     public void i_input_my(String string) {
+        TestRunner.wait.until(ExpectedConditions.titleIs("Skill Test Test Landing Page"));
         TestRunner.landingPage.inputCompanyId(string);
     }
 

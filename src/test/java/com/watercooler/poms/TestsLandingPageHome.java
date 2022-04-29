@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class TestsLandingPageHome {
     private WebDriver driver;
 
-    private By companyIdInput = By.id("comp-id");
+    public By companyIdInput = By.id("comp-id");
     private By individualIdInput = By.id("ind-id");
     private By viewTestsButton = By.id("ind-view-tests");
     private By createTestButton = By.id("comp-create-test");

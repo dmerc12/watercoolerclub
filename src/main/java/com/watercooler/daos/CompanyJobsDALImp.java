@@ -48,7 +48,7 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "select * from job_table where company_id=?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, -1);
+            ps.setInt(1, companyId);
             ResultSet rs = ps.executeQuery();
             List<Job> testJobs = new ArrayList<>();
             while(rs.next()){
@@ -76,7 +76,7 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
     public List<Applicant> viewApplicants(int jobId){
         logger.info("Starting DAL function viewApplicants with data: " + jobId);
         try (Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select * from applicant_table Left Join applied_jobs on job_id=?;";
+            String sql = "select applied_jobs.job_id, applicant_table.* from applied_jobs join applicant_table on applied_jobs.applicant_id = applicant_table.applicant_id where job_id = ?;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, jobId);
             ResultSet rs = ps.executeQuery();
@@ -95,13 +95,7 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                 );
                 applicants.add(applicant);
             }
-            if (applicants.size() == 0){
-                logger.warn("Error with DAL function viewApplicants with error: Applicants list size = 0");
-                throw new NoJobFound("There are no applicants for the job ID provided!");
-            } else {
-                logger.info("Finishing DAL function viewApplicants with result: " + applicants);
-                return applicants;
-            }
+            return applicants;
         } catch (SQLException exception) {
             exception.printStackTrace();
             logger.error("Error with DAL function viewApplicants with error: " + exception.getMessage());

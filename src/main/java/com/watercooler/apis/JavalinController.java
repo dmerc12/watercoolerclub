@@ -5,6 +5,7 @@ import com.watercooler.entities.UsernamePasswordApplicant;
 import com.watercooler.entities.UsernamePasswordCompany;
 import com.watercooler.saos.UsernamePasswordApplicantSAOInterface;
 import com.watercooler.saos.UsernamePasswordCompanySAOInterface;
+import com.watercooler.utilities.CustomUncheckedException;
 import io.javalin.http.Handler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -95,19 +96,26 @@ public class JavalinController {
 
 
     public Handler UnPwApplicantCreate = ctx -> {
+        try {
+            String body = ctx.body();
+
+            Gson gson = new Gson();
+
+            UsernamePasswordApplicant usernamePasswordApplicantGson = gson.fromJson(body, UsernamePasswordApplicant.class);
+
+            UsernamePasswordApplicant creation = usernamePasswordApplicantSAOImp.catchErrorsAccountApplicant(usernamePasswordApplicantGson);
+
+            String creating = gson.toJson(creation);
+
+            ctx.result(creating);
+            ctx.status(201);
+
+        } catch (CustomUncheckedException exception) {
+            ctx.status(400);
+
+        }
         // body
-        String body = ctx.body();
 
-        Gson gson = new Gson();
-
-        UsernamePasswordApplicant usernamePasswordApplicantGson = gson.fromJson(body, UsernamePasswordApplicant.class);
-
-        UsernamePasswordApplicant creation = usernamePasswordApplicantSAOImp.catchErrorsAccountApplicant(usernamePasswordApplicantGson);
-
-        String creating = gson.toJson(creation);
-
-        ctx.result(creating);
-        ctx.status(201);
 
         //get return value of the service layer
 
@@ -118,17 +126,25 @@ public class JavalinController {
 
     public Handler UnPwCompanyCreate = ctx -> {
 
-        String body = ctx.body();
+        try {
+            String body = ctx.body();
 
-        Gson gson = new Gson();
+            Gson gson = new Gson();
 
-        UsernamePasswordCompany usernamePasswordCompanyGson = gson.fromJson(body, UsernamePasswordCompany.class);
+            UsernamePasswordCompany usernamePasswordCompanyGson = gson.fromJson(body, UsernamePasswordCompany.class);
 
-        UsernamePasswordCompany creation = usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(usernamePasswordCompanyGson);
+            UsernamePasswordCompany creation = usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(usernamePasswordCompanyGson);
 
-        String creating = gson.toJson(creation);
+            String creating = gson.toJson(creation);
 
-        ctx.result(creating);
+            ctx.result(creating);
+
+        } catch (CustomUncheckedException exception) {
+            ctx.status(400);
+
+        }
+
+
 
     };
 }

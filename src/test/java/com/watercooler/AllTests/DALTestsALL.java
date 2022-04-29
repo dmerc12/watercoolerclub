@@ -1,4 +1,4 @@
-package com.watercooler.dataLayerTests;
+package com.watercooler.AllTests;
 
 import com.watercooler.daos.*;
 

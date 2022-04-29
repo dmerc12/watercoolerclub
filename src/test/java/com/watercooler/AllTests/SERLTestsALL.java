@@ -1,4 +1,4 @@
-package com.watercooler.serviceLayerTests;
+package com.watercooler.AllTests;
 
 import com.watercooler.daos.*;
 import com.watercooler.saos.*;
@@ -285,6 +285,7 @@ public class SERLTestsALL {
 
     @Test
     public void serviceViewPostedJobsSuccess(){
+        Mockito.doReturn(mockJobs).when(jobsDAO).viewJobs(1);
         jobsSAO.serviceViewJobs(1);
         Mockito.verify(jobsDAO, VerificationModeFactory.times(1)).viewJobs(1);
         //List<Job> testJobList = jobsSAO.serviceViewJobs(0);
@@ -300,6 +301,7 @@ public class SERLTestsALL {
 
     @Test // pulls all the applicants regardless of the job applied to. high priority bug, high severity.
     public void serviceViewApplicantsSuccess(){
+        Mockito.doReturn(mockApplicants).when(jobsDAO).viewApplicants(1);
         jobsSAO.serviceViewApplicants(1);
         Mockito.verify(jobsDAO, VerificationModeFactory.times(1)).viewApplicants(1);
         //List<Applicant> applicants = jobsSAO.serviceViewApplicants(0);

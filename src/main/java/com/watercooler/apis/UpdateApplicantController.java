@@ -45,7 +45,7 @@ public class UpdateApplicantController{
             ctx.status(201);
         } catch (CustomUncheckedException e) {
             ctx.result(e.getMessage());
-            ctx.status(405);
+            ctx.status(400);
         }
     };
 

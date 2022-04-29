@@ -54,7 +54,7 @@ public class CompanyJobsSALImp implements CompanyJobsSAL{
     public List<Job> serviceViewJobs(int companyId) {
         logger.info("Begining SAL function viewJobs with data: " + companyId);
         List<Job> returningJobs = jobsDAO.viewJobs(companyId);
-        if(returningJobs == null){
+        if(returningJobs.size() < 1){
             logger.warn("List of returning jobs = null");
             throw new NoJobFound("There are no posted jobs with the company ID provided!");
         }else{
@@ -67,7 +67,7 @@ public class CompanyJobsSALImp implements CompanyJobsSAL{
     public List<Applicant> serviceViewApplicants(int jobId) {
         logger.info("Begining SAL function viewApplicants with data: " + jobId);
         List<Applicant> returningApplicants = jobsDAO.viewApplicants(jobId);
-        if(returningApplicants != null){
+        if(returningApplicants.size() >= 1){
             logger.info("Finishing SAL function viewApplicants with result: /n" + returningApplicants);
             return returningApplicants;
         } else {
