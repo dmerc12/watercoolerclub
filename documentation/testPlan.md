@@ -5,11 +5,6 @@
 - IDE: IntelliJ, Visual Studio Code
 - Tertiary Programs: DBeaver, Postman, AWS RDS, AWS EC2, GitHub, Git, GitBash, Zoom
 
-## Deadlines
-#### Sprint 1 : Friday, April 15th
-#### Sprint 2: Friday, April 22nd
-#### Final Deadline: Friday, April 29th
-
 ## What Is Being Tested
 ### Individuals - Login
 - Database: check if username+password combination exists and return id of the account
